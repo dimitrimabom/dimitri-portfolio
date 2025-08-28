@@ -18,15 +18,15 @@ export default function Home() {
 
         <section className="py-12 px-4">
           <h1 className="text-5xl leading-15 text-foreground font-bold">
-            Hey, I'm Dimitri. <br />I design{" "}
+            Hey, I&apos;m Dimitri. <br />I design{" "}
             <span className="text-primary/80 font-eduHand font-medium">
               websites.
             </span>
           </h1>
           <p className="text-foreground/50 pt-4 text-lg font-medium">
-            I'm a software engineer with a passion for building websites.
+            I&apos;m a software engineer with a passion for building websites.
             <br />
-            I'm currently working at{" "}
+            I&apos;m currently working at{" "}
             <span className="text-primary/80 font-eduHand font-medium">
               Google
             </span>{" "}
