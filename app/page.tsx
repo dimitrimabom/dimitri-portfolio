@@ -1,103 +1,130 @@
+import { CopyToClipboard } from "@/components/CopyToClipboard";
+import ExperienceSection from "@/components/ExperienceSection";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { MoveRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <div className="font-raleway max-w-4xl mx-auto">
+        {/* <header className="bg-red-500 h-12 flex items-center justify-between px-4">header</header> */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <section className="py-12 px-4">
+          <h1 className="text-5xl leading-15 text-foreground font-bold">
+            Hey, I'm Dimitri. <br />I design{" "}
+            <span className="text-primary/80 font-eduHand font-medium">
+              websites.
+            </span>
+          </h1>
+          <p className="text-foreground/50 pt-4 text-lg font-medium">
+            I'm a software engineer with a passion for building websites.
+            <br />
+            I'm currently working at{" "}
+            <span className="text-primary/80 font-eduHand font-medium">
+              Google
+            </span>{" "}
+            as a software engineer.
+          </p>
+
+          <div className="flex items-center gap-4 pt-8">
+            <Link href="/about">
+              <Button className="bg-primary/80 text-white">About Me</Button>
+            </Link>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <CopyToClipboard text="dimitrymabom@gmail.com" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-foreground">dimitrymabom@gmail.com</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          <div className="flex items-center gap-4 pt-8 w-full flex-col">
+            <div className="flex w-full justify-between items-center">
+              <span className="text-primary/80 font-bold text-4xl p-4">
+                My Works
+              </span>
+              <Link href="/works">
+                <span className="flex flex-row gap-2">
+                  More
+                  <MoveRight />
+                </span>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
+              <Link href="#" className="flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
+                  {/* Image */}
+                  <div className="relative w-full h-56">
+                    <Image
+                      src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
+                      alt="Billify template"
+                      fill
+                      className="object-cover hover:scale-105 duration-300 ease-in-out"
+                    />
+                  </div>
+
+                  {/* Texte */}
+                  <div className="p-4 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-md font-eduHand font-medium text-primary">
+                        Billify
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        A digital invoice template for designers.
+                      </p>
+                    </div>
+                    <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
+                      2020
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="#" className="flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
+                  {/* Image */}
+                  <div className="relative w-full h-56">
+                    <Image
+                      src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
+                      alt="Billify template"
+                      fill
+                      className="object-cover hover:scale-105 duration-300 ease-in-out"
+                    />
+                  </div>
+
+                  {/* Texte */}
+                  <div className="p-4 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-md font-eduHand font-medium text-primary">
+                        Billify
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        A digital invoice template for designers.
+                      </p>
+                    </div>
+                    <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
+                      2020
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <ExperienceSection />
+        </section>
+      </div>
     </div>
   );
 }
