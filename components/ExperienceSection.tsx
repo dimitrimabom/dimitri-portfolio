@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 interface ExperienceItem {
   role: string;
   company: string;
@@ -40,26 +42,55 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperienceSection() {
   return (
-    <section className="w-full py-12">
-      <div className="mx-auto max-w-6xl flex gap-10 px-6">
+    <section className="w-full py-16">
+      <div className="mx-auto max-w-6xl flex flex-col md:flex-row gap-10 px-6">
         {/* Titre */}
-        <h2 className="w-1/4 text-xl font-semibold">Experience</h2>
+        <h2 className="w-full md:w-1/4 text-3xl font-bold tracking-tight text-foreground text-center md:text-left">
+          <span className="text-primary/80 font-bold text-4xl p-4">
+            Experience
+          </span>
+        </h2>
 
         {/* Liste */}
-        <div className="flex-1 flex flex-col gap-4">
-          {experiences.map((exp, i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-border bg-muted/10 p-5"
-            >
-              <p className="text-sm text-muted-foreground">{exp.role}</p>
-              <h3 className="text-base font-semibold">{exp.company}</h3>
-              <span className="text-sm text-muted-foreground block mb-2">
-                {exp.years}
-              </span>
-              <p className="text-sm opacity-80">{exp.description}</p>
-            </div>
-          ))}
+        <div className="flex-1 relative">
+          {/* Timeline line (only on md+) */}
+          <div className="hidden md:block absolute left-3 top-0 bottom-0 w-[2px] bg-border" />
+
+          <div className="flex flex-col gap-8 md:pl-10">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="relative rounded-xl border border-border bg-card/50 p-6 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                {/* Timeline dot (hidden on mobile) */}
+                <div className="hidden md:block absolute -left-[29px] top-6 w-4 h-4 rounded-full border-2 border-primary bg-background shadow" />
+
+                {/* Rôle */}
+                <h3 className="text-lg font-semibold text-primary">
+                  {exp.role}
+                </h3>
+
+                {/* Société + Années */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
+                  <p className="text-sm font-medium text-foreground">
+                    {exp.company}
+                  </p>
+                  <span className="text-xs text-muted-foreground bg-muted/30 px-3 py-1 rounded-full w-fit">
+                    {exp.years}
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {exp.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
