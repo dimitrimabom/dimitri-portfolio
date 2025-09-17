@@ -99,7 +99,7 @@ const page = () => {
             content: `Pour moi, le développement web n’est pas qu’une question de code.
             C’est un mélange de créativité, de rigueur et de curiosité. J’aime
             comprendre les besoins réels, transformer une idée en produit concret
-            et offrir une expérience fluide et agréable. 🚀`,
+            et offrir une expérience fluide et agréable. `,
           },
           {
             title: "Centres d’Intérêt",

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MoveRight } from "lucide-react";
+import Link from "next/link";
 
 interface ExperienceItem {
   role: string;
@@ -43,14 +45,14 @@ const experiences: ExperienceItem[] = [
 export default function ExperienceSection() {
   return (
     <section className="w-full py-16">
-      <div className="mx-auto max-w-6xl flex flex-col md:flex-row gap-10 px-6">
-        {/* Titre */}
-        <h2 className="w-full md:w-1/4 text-3xl font-bold tracking-tight text-foreground text-center md:text-left">
-          <span className="text-primary/80 font-bold text-4xl p-4">
-            Experience
-          </span>
-        </h2>
+      <div className="flex w-full justify-between">
+        <span className="text-primary/80 font-bold text-4xl p-4">
+          Experience
+        </span>
+      </div>
+      {/* Titre */}
 
+      <div className="mx-auto max-w-6xl flex flex-col md:flex-row gap-10 px-6">
         {/* Liste */}
         <div className="flex-1 relative">
           {/* Timeline line (only on md+) */}
