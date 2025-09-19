@@ -46,7 +46,7 @@ export default function ExperienceSection() {
   return (
     <section className="w-full py-16">
       <div className="flex w-full justify-between">
-        <span className="text-primary/80 font-bold text-4xl p-4">
+        <span className="text-primary/80 font-bold text-4xl p-6 pt-0 mb-4">
           Experience
         </span>
       </div>
@@ -69,7 +69,7 @@ export default function ExperienceSection() {
                 className="relative rounded-xl border border-border bg-card/50 p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 {/* Timeline dot (hidden on mobile) */}
-                <div className="hidden md:block absolute -left-[29px] top-6 w-4 h-4 rounded-full border-2 border-primary bg-background shadow" />
+                <div className="hidden md:block absolute -left-[36px] top-6 w-4 h-4 rounded-full border-2 border-primary bg-background shadow" />
 
                 {/* Rôle */}
                 <h3 className="text-lg font-semibold text-primary">

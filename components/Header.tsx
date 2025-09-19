@@ -24,7 +24,7 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="font-eduHand w-full bg-background border-b border-border">
+    <header className="font-eduHand w-full bg-background border-border fixed z-40">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="text-2xl font-medium text-muted-foreground">

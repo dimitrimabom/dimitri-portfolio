@@ -9,11 +9,12 @@ import {
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Card from "@/components/Card";
 
 export default function Home() {
   return (
     <div>
-      <div className="font-raleway max-w-4xl mx-auto">
+      <div className="font-raleway max-w-4xl mx-auto mt-10">
         {/* <header className="bg-red-500 h-12 flex items-center justify-between px-4">header</header> */}
 
         <section className="py-12 px-4">
@@ -43,22 +44,15 @@ export default function Home() {
           <p className="text-foreground/50 pt-4 text-lg font-medium">
             I&apos;m a{" "}
             <span className="text-primary/80 font-eduHand font-medium">
-              Front Office Engineer
-            </span>{" "}
-            &
-            <span className="text-primary/80 font-eduHand font-medium">
               {" "}
               Web Developer
-            </span>{" "}
-            passionate about creating performant and intuitive digital products.
-            Currently working at{" "}
-            <span className="text-primary/80 font-eduHand">MTN Cameroon </span>
-            as a{" "}
-            <span className="text-primary/80 font-eduHand font-medium">
-              Team Leader Front Office
-            </span>{" "}
-            while also building innovative solutions at{" "}
-            <span className="text-primary/80 font-eduHand">Alt Plus</span>.
+            </span>.
+          </p>
+          <p className="text-foreground/50 pt-4 text-lg font-medium">
+            Passionate about creating performant and intuitive digital products.
+          </p>
+          <p className="text-foreground/50 pt-4 text-lg font-medium">
+            Currently building innovative solutions with <span className="text-primary/80 font-eduHand">Alt Plus</span>.
           </p>
 
           <div className="flex items-center gap-4 pt-8">
@@ -90,69 +84,13 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
-              <Link href="#" className="flex items-center justify-center">
-                <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground group hover:shadow-xl hover:-translate-y-2 duration-300 ease-in-out">
-                  {/* Image */}
-                  <div className="relative w-full h-56 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Billify template"
-                      fill
-                      className="object-cover group-hover:scale-110 duration-500 ease-in-out"
-                    />
-                    {/* Overlay au hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                  </div>
-
-                  {/* Texte */}
-                  <div className="p-5 flex items-center justify-between">
-                    <div>
-                      <h3 className="text-lg font-eduHand font-semibold text-primary group-hover:text-primary/80 transition">
-                        Billify
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                        A sleek digital invoice template for creative
-                        professionals.
-                      </p>
-                    </div>
-                    <div className="px-3 py-1 rounded-full text-xs font-semibold primary/90 text-white shadow-sm bg-primary">
-                      2020
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="#" className="flex items-center justify-center">
-                <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground group hover:shadow-xl hover:-translate-y-2 duration-300 ease-in-out">
-                  {/* Image */}
-                  <div className="relative w-full h-56 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Billify template"
-                      fill
-                      className="object-cover group-hover:scale-110 duration-500 ease-in-out"
-                    />
-                    {/* Overlay au hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                  </div>
-
-                  {/* Texte */}
-                  <div className="p-5 flex items-center justify-between">
-                    <div>
-                      <h3 className="text-lg font-eduHand font-semibold text-primary group-hover:text-primary/80 transition">
-                        Billify
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                        A sleek digital invoice template for creative
-                        professionals.
-                      </p>
-                    </div>
-                    <div className="px-3 py-1 rounded-full text-xs font-semibold primary/90 text-white shadow-sm bg-primary">
-                      2020
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              {[...Array(2)].map((_, i) => (
+                <Card key={i}
+                image="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                title="Billify"
+                category="A sleek digital invoice template for creative professionals."
+              />
+              ))}
             </div>
           </div>
 

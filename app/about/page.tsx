@@ -130,7 +130,7 @@ const page = () => {
           transition={{ duration: 0.7, delay: 1 }}
           className="flex items-center gap-4 pt-8"
         >
-          <Link href="/work">
+          <Link href="/works">
             <Button className="text-white">My Works</Button>
           </Link>
 
