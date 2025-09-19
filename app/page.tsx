@@ -14,7 +14,7 @@ import Card from "@/components/Card";
 export default function Home() {
   return (
     <div>
-      <div className="font-raleway max-w-4xl mx-auto mt-10">
+      <div className="font-raleway max-w-4xl mx-auto mt-12">
         {/* <header className="bg-red-500 h-12 flex items-center justify-between px-4">header</header> */}
 
         <section className="py-12 px-4">
@@ -35,27 +35,35 @@ export default function Home() {
           </p> */}
 
           <h1 className="text-5xl leading-15 text-foreground font-bold">
-            Hey, I&apos;m Dimitri. <br />I build{" "}
-            <span className="text-primary/80 font-eduHand font-medium">
-              websites.
-            </span>
+            Hey, I&apos;m Dimitri. <br />
+            <p className="text-foreground text-4xl font-medium">
+              I build{" "}
+              <span className="text-primary/80 font-eduHand font-medium">
+                <span className="text-primary/80 font-eduHand font-medium">
+                  websites
+                </span>
+              </span>
+              .
+            </p>
           </h1>
 
-          <p className="text-foreground/50 pt-4 text-lg font-medium">
+          <p className="text-foreground/50 pt-6 text-lg font-medium">
             I&apos;m a{" "}
             <span className="text-primary/80 font-eduHand font-medium">
               {" "}
               Web Developer
-            </span>.
+            </span>
+            .
           </p>
-          <p className="text-foreground/50 pt-4 text-lg font-medium">
+          <p className="text-foreground/50 text-lg font-medium">
             Passionate about creating performant and intuitive digital products.
           </p>
-          <p className="text-foreground/50 pt-4 text-lg font-medium">
-            Currently building innovative solutions with <span className="text-primary/80 font-eduHand">Alt Plus</span>.
+          <p className="text-foreground/50 text-lg font-medium">
+            Currently building innovative solutions with{" "}
+            <span className="text-primary/80 font-eduHand">Alt Plus</span>.
           </p>
 
-          <div className="flex items-center gap-4 pt-8">
+          <div className="flex items-center gap-4 pt-10">
             <Link href="/about">
               <Button className="text-white">About Me</Button>
             </Link>
@@ -85,11 +93,12 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
               {[...Array(2)].map((_, i) => (
-                <Card key={i}
-                image="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                title="Billify"
-                category="A sleek digital invoice template for creative professionals."
-              />
+                <Card
+                  key={i}
+                  image="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  title="Billify"
+                  category="A sleek digital invoice template for creative professionals."
+                />
               ))}
             </div>
           </div>

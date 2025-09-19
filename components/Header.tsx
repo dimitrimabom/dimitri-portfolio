@@ -36,21 +36,21 @@ export default function Header() {
           <Link
             href="https://x.com/@dimitrimabom"
             target="_blank"
-            className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
           >
             <Twitter className="w-4 h-4" />
           </Link>
           <Link
             href="https://www.youtube.com/@dimitrimabom"
             target="_blank"
-            className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
           >
             <Youtube className="w-4 h-4" />
           </Link>
           <Link
             href="https://www.instagram.com/dimitrimabom/"
             target="_blank"
-            className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
           >
             <Instagram className="w-4 h-4" />
           </Link>
