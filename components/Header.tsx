@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Twitter, Youtube, Instagram, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function Header() {
@@ -33,30 +33,9 @@ export default function Header() {
 
         {/* Icons */}
         <nav className="flex items-center gap-3">
-          <Link
-            href="https://x.com/@dimitrimabom"
-            target="_blank"
-            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-          >
-            <Twitter className="w-4 h-4" />
-          </Link>
-          <Link
-            href="https://www.youtube.com/@dimitrimabom"
-            target="_blank"
-            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-          >
-            <Youtube className="w-4 h-4" />
-          </Link>
-          <Link
-            href="https://www.instagram.com/dimitrimabom/"
-            target="_blank"
-            className="p-2 text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-          >
-            <Instagram className="w-4 h-4" />
-          </Link>
           <div className="relative" ref={menuRef}>
             <button
-              className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+              className="p-2 rounded-sm hover:rounded-none transition-all duration-600 ease-in-out border border-border text-muted-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Ouvrir le menu"
               type="button"
               onClick={() => setOpen((prev) => !prev)}
@@ -68,7 +47,7 @@ export default function Header() {
             {open && (
               <div
                 id="menu-dropdown"
-                className="absolute right-0 mt-2 w-40 bg-background border border-border rounded-lg shadow-lg z-10"
+                className="absolute right-0 mt-2 w-40 bg-background border border-border rounded-lg hover:rounded-none transition-all duration-300 ease-in-out shadow-lg z-10"
                 role="menu"
                 aria-label="Menu principal"
               >

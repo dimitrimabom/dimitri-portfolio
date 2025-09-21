@@ -10,7 +10,7 @@ export default function Card({ image, title, category }: CardProps) {
   return (
     <div
       className="relative rounded-sm overflow-hidden shadow-md group-hover:rounded-lg
-                    group-hover:shadow-xl transition-all duration-300 ease-in-out w-[380px] group transition cursor-pointer "
+                    group-hover:shadow-xl transition-all duration-300 ease-in-out w-[380px] group transition cursor-pointer hover:rounded-none "
     >
       {/* Image */}
       <img

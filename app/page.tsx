@@ -7,9 +7,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { MoveRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import Card from "@/components/Card";
+import { Twitter, Youtube, Instagram } from "lucide-react";
 
 export default function Home() {
   return (
@@ -62,6 +62,30 @@ export default function Home() {
             Currently building innovative solutions with{" "}
             <span className="text-primary/80 font-eduHand">Alt Plus</span>.
           </p>
+
+          <div className="flex items-center gap-4 pt-8">
+            <Link
+              href="https://x.com/@dimitrimabom"
+              target="_blank"
+              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            >
+              <Twitter className="w-4 h-4" />
+            </Link>
+            <Link
+              href="https://www.youtube.com/@dimitrimabom"
+              target="_blank"
+              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            >
+              <Youtube className="w-4 h-4" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/dimitrimabom/"
+              target="_blank"
+              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+            >
+              <Instagram className="w-4 h-4" />
+            </Link>
+          </div>
 
           <div className="flex items-center gap-4 pt-10">
             <Link href="/about">
