@@ -1,155 +1,81 @@
 import { MoveLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import WorkCard from "@/components/WorkCard";
 
-const page = () => {
-  return (
-    <div className="font-raleway max-w-4xl mx-auto">
-      <section className="py-12 px-4">
-        <div className="m-6 flex gap-2">
-          <MoveLeft />
-          Back
-        </div>
+const projects = [
+	{
+		slug: "test1",
+		image:
+			"https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		title: "Billify",
+		excerpt: "A digital invoice template for designers.",
+		date: "2020-01-01",
+	},
+	{
+		slug: "test2",
+		image:
+			"https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		title: "Portfolio",
+		excerpt: "A modern portfolio website built with Next.js.",
+		date: "2022-01-01",
+	},
+	{
+		slug: "test3",
+		image:
+			"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		title: "ShopDash",
+		excerpt: "An e-commerce analytics dashboard.",
+		date: "2021-01-01",
+	},
+	{
+		slug: "test4",
+		image:
+			"https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		title: "Taskly",
+		excerpt: "A productivity app to manage daily tasks.",
+		date: "2023-01-01",
+	},
+];
 
-        <h1 className="text-5xl leading-15 text-foreground font-bold px-6">
-          Projects
-        </h1>
-        <p className="text-foreground/50 pt-4 text-lg font-medium px-4">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        </p>
+const Page = () => {
+	return (
+		<div className="font-raleway max-w-4xl mx-auto">
+			<section className="py-12 px-4">
+				<Link
+					href="/"
+					className="m-6 flex items-center gap-2 text-primary hover:underline w-fit"
+				>
+					<MoveLeft />
+					<span>Back</span>
+				</Link>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full mt-6">
-          <Link
-            href="/works/test1"
-            className="flex items-center justify-center"
-          >
-            <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
-              {/* Image */}
-              <div className="relative w-full h-56">
-                <Image
-                  src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
-                  alt="Billify template"
-                  fill
-                  className="object-cover hover:scale-105 duration-300 ease-in-out"
-                />
-              </div>
+				<h1 className="text-5xl leading-tight text-foreground font-bold px-6 mb-2">
+					Projects
+				</h1>
+				<p className="text-foreground/60 pt-2 text-lg font-medium px-6 mb-8">
+					Explore a selection of my recent work, including web apps, templates,
+					and tools.
+				</p>
 
-              {/* Texte */}
-              <div className="p-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-md font-eduHand font-medium text-primary">
-                    Billify
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    A digital invoice template for designers.
-                  </p>
-                </div>
-                <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
-                  2020
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/works/test2"
-            className="flex items-center justify-center"
-          >
-            <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
-              {/* Image */}
-              <div className="relative w-full h-56">
-                <Image
-                  src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
-                  alt="Billify template"
-                  fill
-                  className="object-cover hover:scale-105 duration-300 ease-in-out"
-                />
-              </div>
-
-              {/* Texte */}
-              <div className="p-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-md font-eduHand font-medium text-primary">
-                    Billify
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    A digital invoice template for designers.
-                  </p>
-                </div>
-                <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
-                  2020
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/works/test3"
-            className="flex items-center justify-center"
-          >
-            <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
-              {/* Image */}
-              <div className="relative w-full h-56">
-                <Image
-                  src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
-                  alt="Billify template"
-                  fill
-                  className="object-cover hover:scale-105 duration-300 ease-in-out"
-                />
-              </div>
-
-              {/* Texte */}
-              <div className="p-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-md font-eduHand font-medium text-primary">
-                    Billify
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    A digital invoice template for designers.
-                  </p>
-                </div>
-                <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
-                  2020
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/works/test4"
-            className="flex items-center justify-center"
-          >
-            <div className="rounded-xl overflow-hidden shadow-lg w-[380px] bg-card text-card-foreground">
-              {/* Image */}
-              <div className="relative w-full h-56">
-                <Image
-                  src="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // remplace par ton image
-                  alt="Billify template"
-                  fill
-                  className="object-cover hover:scale-105 duration-300 ease-in-out"
-                />
-              </div>
-
-              {/* Texte */}
-              <div className="p-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-md font-eduHand font-medium text-primary">
-                    Billify
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    A digital invoice template for designers.
-                  </p>
-                </div>
-                <div className="px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground">
-                  2020
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
+							{projects.map((project, idx) => (
+								<WorkCard
+									key={project.slug}
+									image={project.image}
+									title={project.title}
+									slug={project.slug}
+									date={project.date}
+									excerpt={project.excerpt}
+									priority={idx === 0}
+								/>
+							))}
+						</div>
+			</section>
+		</div>
+	);
 };
 
-export default page;
+export default Page;
+
+

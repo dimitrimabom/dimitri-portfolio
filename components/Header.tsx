@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, Sun } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function Header() {
@@ -24,18 +24,26 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="font-eduHand w-full bg-background border-border fixed z-40">
+    <header className="w-full bg-background border-border fixed z-40">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-medium text-muted-foreground">
+        <Link href="/" className="font-eduHand text-2xl font-medium text-muted-foreground">
           Dimitri Mabom
         </Link>
 
         {/* Icons */}
         <nav className="flex items-center gap-3">
           <div className="relative" ref={menuRef}>
+            <div className="flex items-center gap-2">
+              <button
+              className="p-2 rounded-sm text-muted-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label="Ouvrir le menu"
+              type="button"
+            >
+              <Sun className="w-4 h-4" />
+            </button>
             <button
-              className="p-2 rounded-sm hover:rounded-none transition-all duration-600 ease-in-out border border-border text-muted-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+              className="p-2 rounded-sm border border-border text-muted-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Ouvrir le menu"
               type="button"
               onClick={() => setOpen((prev) => !prev)}
@@ -44,10 +52,11 @@ export default function Header() {
             >
               <Menu className="w-4 h-4" />
             </button>
+            </div>
             {open && (
               <div
                 id="menu-dropdown"
-                className="absolute right-0 mt-2 w-40 bg-background border border-border rounded-lg hover:rounded-none transition-all duration-300 ease-in-out shadow-lg z-10"
+                className="absolute right-0 mt-2 w-40 bg-background border border-border rounded-lg shadow-lg z-10 overflow-hidden"
                 role="menu"
                 aria-label="Menu principal"
               >

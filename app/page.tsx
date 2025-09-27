@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/tooltip";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
-import Card from "@/components/Card";
 import { Twitter, Youtube, Instagram } from "lucide-react";
+import WorkCard from "@/components/WorkCard";
 
 export default function Home() {
   return (
@@ -63,29 +63,7 @@ export default function Home() {
             <span className="text-primary/80 font-eduHand">Alt Plus</span>.
           </p>
 
-          <div className="flex items-center gap-4 pt-8">
-            <Link
-              href="https://x.com/@dimitrimabom"
-              target="_blank"
-              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-            >
-              <Twitter className="w-4 h-4" />
-            </Link>
-            <Link
-              href="https://www.youtube.com/@dimitrimabom"
-              target="_blank"
-              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-            >
-              <Youtube className="w-4 h-4" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/dimitrimabom/"
-              target="_blank"
-              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-            >
-              <Instagram className="w-4 h-4" />
-            </Link>
-          </div>
+
 
           <div className="flex items-center gap-4 pt-10">
             <Link href="/about">
@@ -97,9 +75,39 @@ export default function Home() {
                 <CopyToClipboard text="dimitrymabom@gmail.com" />
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-foreground">dimitrymabom@gmail.com</p>
+                <p className="text-foreground">Copy email to clipboard</p>
               </TooltipContent>
             </Tooltip>
+          </div>
+
+          <div className="flex items-center gap-4 pt-6">
+            <Link
+              href="https://x.com/@dimitrimabom"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter/X"
+              className="group text-muted-foreground hover:text-primary hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <Twitter className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            </Link>
+            <Link
+              href="https://www.youtube.com/@dimitrimabom"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="group text-muted-foreground hover:text-primary hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <Youtube className="w-7 h-7 group-hover:scale-110 transition-transform" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/dimitrimabom/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="group text-muted-foreground hover:text-primary hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            </Link>
           </div>
 
           <div className="flex items-center gap-4 pt-8 w-full flex-col">
@@ -115,16 +123,41 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
-              {[...Array(2)].map((_, i) => (
-                <Card
-                  key={i}
-                  image="https://images.unsplash.com/photo-1756151224665-eba765e8c3b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  title="Billify"
-                  category="A sleek digital invoice template for creative professionals."
+
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
+              {[
+                {
+                  title: "Portfolio Website Redesign",
+                  slug: "portfolio-website-redesign",
+                  date: "2024-03-15",
+                  image:
+                    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+                  excerpt:
+                    "A modern redesign of my personal portfolio, focusing on accessibility, performance, and a clean UI.",
+                },
+                {
+                  title: "E-commerce Dashboard",
+                  slug: "ecommerce-dashboard",
+                  date: "2024-02-10",
+                  image:
+                    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+                  excerpt:
+                    "A dashboard for managing products, orders, and analytics, built with Next.js and Tailwind CSS.",
+                },
+              ].map((work, i) => (
+                <WorkCard
+                  key={work.slug}
+                  image={work.image}
+                  title={work.title}
+                  slug={work.slug}
+                  date={work.date}
+                  excerpt={work.excerpt}
+                  priority={i === 0} // tu peux mettre la priorité seulement sur le 1er
                 />
               ))}
             </div>
+
           </div>
 
           <ExperienceSection />
