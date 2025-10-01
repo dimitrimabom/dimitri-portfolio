@@ -2,18 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import HeroParticles from './HeroParticles';
 
+const codeLines = [
+    'const developer = {',
+    '  name: &quot;Dimitri Mabom&quot;,',
+    '  role: &quot;Frontend Developer&quot;,',
+    '  skills: [&quot;React&quot;, &quot;TypeScript&quot;, &quot;Tailwind&quot;]',
+    '};'
+];
+
 const HeroBanner = () => {
     const [displayText, setDisplayText] = useState('');
     const [cursorVisible, setCursorVisible] = useState(true);
     const [currentLine, setCurrentLine] = useState(0);
 
-    const codeLines = [
-        'const developer = {',
-        '  name: "Dimitri Mabom",',
-        '  role: "Frontend Developer",',
-        '  skills: ["React", "TypeScript", "Tailwind"]',
-        '};'
-    ];
 
     useEffect(() => {
         if (currentLine < codeLines.length) {
@@ -23,16 +24,16 @@ const HeroBanner = () => {
             const timer = setInterval(() => {
                 if (charIndex <= line.length) {
                     setDisplayText(prev => {
-                        const lines = prev.split('\n');
+                        const lines = prev.split("\n");
                         lines[currentLine] = line.slice(0, charIndex);
-                        return lines.join('\n');
+                        return lines.join("\n");
                     });
                     charIndex++;
                 } else {
                     clearInterval(timer);
                     setTimeout(() => {
                         setCurrentLine(prev => prev + 1);
-                        setDisplayText(prev => prev + '\n');
+                        setDisplayText(prev => prev + "\n");
                     }, 200);
                 }
             }, 50);
@@ -120,14 +121,14 @@ const HeroBanner = () => {
                                                         <>
                                                             <span className="text-cyan-400">  name</span>
                                                             <span className="text-gray-300">: </span>
-                                                            <span className="text-green-400">"{line.match(/"([^"]*)"/)?.[1] || ''}"</span>
+                                                            <span className="text-green-400">&quot;{line.match(/"([^"]*)"/)?.[1] || ''}&quot;</span>
                                                         </>
                                                     )}
                                                     {line.includes('role:') && (
                                                         <>
                                                             <span className="text-cyan-400">  role</span>
                                                             <span className="text-gray-300">: </span>
-                                                            <span className="text-green-400">"{line.match(/"([^"]*)"/)?.[1] || ''}"</span>
+                                                            <span className="text-green-400">&quot;{line.match(/"([^"]*)"/)?.[1] || ''}&quot;</span>
                                                         </>
                                                     )}
                                                     {line.includes('skills:') && (
@@ -182,7 +183,7 @@ const HeroBanner = () => {
 
                             <div className="slide-up" style={{ animationDelay: '0.6s' }}>
                                 <p className="text-xl text-gray-400 font-light leading-relaxed">
-                                    <span className="text-cyan-400 font-mono">//</span> Frontend Developer passionné par la création d'interfaces modernes et performantes
+                                    <span className="text-cyan-400 font-mono">{'//'}</span> Frontend Developer passionné par la création d&apos;interfaces modernes et performantes
                                 </p>
                             </div>
 
@@ -192,7 +193,7 @@ const HeroBanner = () => {
                                     {'<Stack />'}
                                 </div>
                                 <div className="flex flex-wrap gap-3">
-                                    {['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js'].map((tech, i) => (
+                                    {['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js'].map((tech) => (
                                         <div
                                             key={tech}
                                             className="px-4 py-2 bg-[#161b22] border border-gray-800 rounded text-sm text-gray-300 font-mono hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300"
@@ -223,12 +224,12 @@ const HeroBanner = () => {
                     {/* Bottom info */}
                     <div className="mt-16 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-600 font-mono slide-up" style={{ animationDelay: '1.2s' }}>
                         <div className="flex gap-6">
-                            <span>const location = "Amsterdam, NL";</span>
+                            <span>const location = &quot;Amsterdam, NL&quot;;</span>
                             <span>•</span>
-                            <span>status: "Available for work"</span>
+                            <span>status: &quot;Available for work&quot;</span>
                         </div>
                         <div>
-                            console.log("Let's build something amazing");
+                            console.log(&quot;Let&apos;s build something amazing&quot;);
                         </div>
                     </div>
                 </div>
