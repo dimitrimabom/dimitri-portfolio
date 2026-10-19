@@ -1,48 +1,85 @@
+import type { Locale } from "@/lib/i18n";
 
-export const projects = [
+type ProjectCopy = {
+  category: string;
+  description: string;
+  status: string;
+  detailLabel: string;
+};
+
+export type ProjectStorySection = {
+  key:
+    | "context"
+    | "challenge"
+    | "objective"
+    | "role"
+    | "users"
+    | "design"
+    | "technical"
+    | "challenges"
+    | "learnings"
+    | "nextSteps";
+  copy: Record<Locale, { title: string; body: string }>;
+};
+
+export type Project = {
+  number: string;
+  slug: string;
+  name: string;
+  year: string;
+  artwork: "documents" | "media";
+  image?: {
+    src: string;
+    alt: Record<Locale, string>;
+  };
+  story?: ProjectStorySection[];
+  copy: Record<Locale, ProjectCopy>;
+};
+
+export const projects: Project[] = [
   {
     number: "01",
+    slug: "veyro",
     name: "Veyro",
     year: "2026",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=85",
+    artwork: "documents",
     copy: {
       fr: {
         category: "Application de bureau",
         description:
-          "Explorer une façon plus simple de gérer et parcourir des documents PDF.",
+          "Prototype autour d'une façon plus simple de gérer et parcourir des documents PDF.",
         status: "Prototype",
-        alt: "Bureau de travail avec ordinateur, image d'ambiance du projet.",
+        detailLabel: "Gestion et navigation de documents PDF",
       },
       en: {
         category: "Desktop application",
         description:
-          "Exploring a simpler way to manage and navigate PDF documents.",
+          "A prototype exploring a simpler way to manage and navigate PDF documents.",
         status: "Prototype",
-        alt: "A desk with a computer, used as a visual reference for the project.",
+        detailLabel: "PDF document management and navigation",
       },
     },
   },
   {
     number: "02",
+    slug: "mukuku-media-os",
     name: "Mukuku Media OS",
     year: "2026",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85",
+    artwork: "media",
     copy: {
       fr: {
-        category: "Application web",
+        category: "Concept d'application web",
         description:
-          "Un concept pour réunir et organiser des flux de travail média dans un seul espace numérique.",
+          "Concept de plateforme pour organiser des flux de travail média dans un espace numérique.",
         status: "Concept",
-        alt: "Vue de données sur un écran, utilisée comme référence visuelle du projet.",
+        detailLabel: "Concept de plateforme de workflows média",
       },
       en: {
-        category: "Web application",
+        category: "Web application concept",
         description:
-          "A concept for organizing media workflows in one digital workspace.",
+          "A platform concept for organizing media workflows in one digital workspace.",
         status: "Concept",
-        alt: "Data displayed on a screen, used as a visual reference for the project.",
+        detailLabel: "Media workflow platform concept",
       },
     },
   },

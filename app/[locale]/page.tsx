@@ -8,188 +8,21 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import type { ReactNode } from "react";
+import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/content/projects";
-
-const locales = ["fr", "en"] as const;
-type Locale = (typeof locales)[number];
-
-const copy = {
-  fr: {
-    title: "Dimitri Mabom — Développeur frontend indépendant",
-    description:
-      "Portfolio de Dimitri Mabom : projets numériques, démarche de conception et explorations frontend.",
-    role: "Développeur frontend indépendant",
-    intro: "Des interfaces claires, pensées jusque dans le détail.",
-    descriptionText:
-      "Je m'appelle Dimitri. Je transforme des idées de produits en expériences numériques lisibles, utiles et soignées.",
-    work: "Parcourir les projets",
-    contact: "Parlons de votre projet",
-    selected: "Projets choisis",
-    heading: "Des idées prennent forme.",
-    subheading:
-      "Prototypes et pistes de réflexion autour de produits numériques. Chaque projet commence par une question à résoudre.",
-    imageNote: "Image d'ambiance",
-    portrait: "Portrait à ajouter",
-    portraitCaption: "Un visage à mettre sur les idées.",
-    portraitNote: "Photo de Dimitri à ajouter",
-    visualNotes: "Notes visuelles",
-    visualHeading: "Images, idées, premières pistes.",
-    visualText:
-      "Un aperçu du terrain de jeu : les références visuelles, les essais et les écrans qui donnent forme aux projets.",
-    visualReference: "Référence visuelle — pas une capture du produit",
-    processCardTitle: "Le processus, en mouvement",
-    processCardText: "Croquis et étapes de conception à ajouter",
-    about: "Ma démarche",
-    aboutHeading: "Du besoin à l'interface.",
-    aboutText:
-      "Je m'intéresse à la rencontre entre le design, la technologie et les usages. Mon fil conducteur : rendre les produits plus simples à comprendre et agréables à utiliser.",
-    steps: [
-      {
-        number: "01",
-        title: "Comprendre",
-        description:
-          "Partir du besoin et de la manière dont le produit sera réellement utilisé.",
-      },
-      {
-        number: "02",
-        title: "Clarifier",
-        description:
-          "Organiser l'information pour rendre chaque interface évidente à parcourir.",
-      },
-      {
-        number: "03",
-        title: "Peaufiner",
-        description:
-          "Soigner les détails qui rendent l'expérience cohérente et agréable.",
-      },
-    ],
-    contactTitle: "Une idée à construire ?",
-    contactText:
-      "Je suis ouvert aux échanges autour du développement frontend et des produits numériques.",
-    contactMethods: "Choisis ton moyen de contact",
-    emailLabel: "E-mail",
-    linkedinLabel: "LinkedIn",
-    whatsappLabel: "WhatsApp",
-    github: "Me contacter sur GitHub",
-    footer: "Conçu avec intention.",
-    homeLabel: "Dimitri Mabom, accueil",
-    workNav: "Projets",
-    aboutNav: "Démarche",
-    switchLanguage: "Switch to English",
-  },
-  en: {
-    title: "Dimitri Mabom — Independent Frontend Developer",
-    description:
-      "The portfolio of Dimitri Mabom: digital projects, design approach, and frontend explorations.",
-    role: "Independent frontend developer",
-    intro: "Clear interfaces, considered down to the detail.",
-    descriptionText:
-      "I'm Dimitri. I turn product ideas into digital experiences that feel clear, useful, and considered.",
-    work: "Explore selected work",
-    contact: "Let's talk about your project",
-    selected: "Selected projects",
-    heading: "Ideas taking shape.",
-    subheading:
-      "Prototypes and explorations in digital products. Every project starts with a question worth solving.",
-    imageNote: "Visual reference",
-    portrait: "Portrait to come",
-    portraitCaption: "A face behind the ideas.",
-    portraitNote: "Add Dimitri's photo",
-    visualNotes: "Visual notes",
-    visualHeading: "Images, ideas, first explorations.",
-    visualText:
-      "A glimpse into the process: visual references, experiments, and screens that bring each project to life.",
-    visualReference: "Visual reference — not a product screenshot",
-    processCardTitle: "The process, in progress",
-    processCardText: "Add sketches and design explorations",
-    about: "My approach",
-    aboutHeading: "From needs to interface.",
-    aboutText:
-      "I'm interested in the intersection of design, technology, and real-world use. My guiding principle is to make products easier to understand and enjoyable to use.",
-    steps: [
-      {
-        number: "01",
-        title: "Understand",
-        description:
-          "Start with the need and how the product will actually be used.",
-      },
-      {
-        number: "02",
-        title: "Clarify",
-        description:
-          "Organize information so every interface feels easy to navigate.",
-      },
-      {
-        number: "03",
-        title: "Refine",
-        description:
-          "Pay attention to the details that make an experience feel coherent.",
-      },
-    ],
-    contactTitle: "Have an idea to build?",
-    contactText:
-      "Open to conversations about frontend development and digital products.",
-    contactMethods: "Choose how to get in touch",
-    emailLabel: "Email",
-    linkedinLabel: "LinkedIn",
-    whatsappLabel: "WhatsApp",
-    github: "Get in touch on GitHub",
-    footer: "Built with intention.",
-    homeLabel: "Dimitri Mabom, home",
-    workNav: "Work",
-    aboutNav: "Approach",
-    switchLanguage: "Passer en français",
-  },
-} satisfies Record<
-  Locale,
-  {
-    title: string;
-    description: string;
-    role: string;
-    intro: string;
-    descriptionText: string;
-    work: string;
-    contact: string;
-    selected: string;
-    heading: string;
-    subheading: string;
-    imageNote: string;
-    portrait: string;
-    portraitCaption: string;
-    portraitNote: string;
-    visualNotes: string;
-    visualHeading: string;
-    visualText: string;
-    visualReference: string;
-    processCardTitle: string;
-    processCardText: string;
-    about: string;
-    aboutHeading: string;
-    aboutText: string;
-    steps: { number: string; title: string; description: string }[];
-    contactTitle: string;
-    contactText: string;
-    contactMethods: string;
-    emailLabel: string;
-    linkedinLabel: string;
-    whatsappLabel: string;
-    github: string;
-    footer: string;
-    homeLabel: string;
-    workNav: string;
-    aboutNav: string;
-    switchLanguage: string;
-  }
->;
+import { copy, isLocale, locales, type Locale } from "@/lib/i18n";
+import { siteUrl } from "@/lib/site";
 
 type HomeProps = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({
-  params,
-}: HomeProps): Promise<Metadata> {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: HomeProps): Promise<Metadata> {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
@@ -199,11 +32,13 @@ export async function generateMetadata({
   const t = copy[locale];
 
   return {
+    metadataBase: new URL(siteUrl),
     title: t.title,
     description: t.description,
     alternates: {
       canonical: `/${locale}`,
       languages: {
+        "x-default": "/fr",
         fr: "/fr",
         en: "/en",
       },
@@ -211,360 +46,434 @@ export async function generateMetadata({
     openGraph: {
       title: t.title,
       description: t.description,
+      url: `${siteUrl}/${locale}`,
       locale: locale === "fr" ? "fr_FR" : "en_US",
       type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: t.title,
+      description: t.description,
     },
   };
 }
 
-export default function Home({ params }: HomeProps) {
-  return (
-    <Suspense fallback={<HomeFallback />}>
-      <HomeContent params={params} />
-    </Suspense>
-  );
-}
-
-async function HomeContent({ params }: HomeProps) {
+export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
     notFound();
   }
 
+  return <Portfolio locale={locale} />;
+}
+
+function Portfolio({ locale }: { locale: Locale }) {
   const t = copy[locale];
 
   return (
     <main>
-      <header className="container flex items-center justify-between border-b border-white/10 py-6">
+      <header className="site-header container">
         <Link
           href={`/${locale}`}
-          className="text-lg font-semibold tracking-tight"
+          className="brand"
           aria-label={t.homeLabel}
         >
-          Dimitri<span className="text-[var(--accent)]">.</span>
+          Dimitri<span>.</span>
         </Link>
 
-        <nav aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"} className="flex items-center gap-5 text-sm">
-          <a
-            href="#work"
-            className="hidden text-white/65 transition hover:text-white sm:inline"
-          >
-            {t.workNav}
-          </a>
-          <a
-            href="#about"
-            className="hidden text-white/65 transition hover:text-white sm:inline"
-          >
-            {t.aboutNav}
-          </a>
+        <nav aria-label={t.navLabel} className="site-nav">
+          <a href="#work">{t.workNav}</a>
+          <a href="#about">{t.aboutNav}</a>
+          <a href="#services">{t.servicesNav}</a>
+          <a href="#contact">{t.contactNav}</a>
           <Link
             href={`/${locale === "fr" ? "en" : "fr"}`}
-            className="rounded-full border border-white/15 px-3 py-2 text-xs font-medium tracking-wide transition hover:border-white/40"
+            className="language-link"
             aria-label={t.switchLanguage}
+            hrefLang={locale === "fr" ? "en" : "fr"}
           >
-            {locale === "fr" ? "EN ↗" : "FR ↗"}
+            {t.switchLanguageShort}
           </Link>
         </nav>
       </header>
 
-      <section className="container grid min-h-[70vh] items-center gap-12 py-20 md:grid-cols-[1fr_320px] md:py-28">
-        <div className="reveal">
-          <p className="eyebrow mb-8">{t.role}</p>
-          <h1 className="max-w-5xl font-serif text-5xl font-medium leading-[1.04] tracking-[-0.045em] sm:text-7xl lg:text-[6.5rem]">
-            {t.intro}
-          </h1>
-          <p className="mt-8 max-w-xl text-base leading-8 text-white/65 sm:text-lg">
-            {t.descriptionText}
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#work"
-              className="inline-flex items-center gap-3 rounded-full px-5 py-3 font-medium text-black transition hover:opacity-85"
-              style={{ background: "var(--accent)" }}
-            >
-              {t.work}
-              <ArrowDownRight size={18} />
+      <section className="hero container" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">{t.role}</p>
+          <h1 id="hero-title">{t.intro}</h1>
+          <p className="hero-description">{t.heroText}</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#contact">
+              {t.contactAction}
+              <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 transition hover:border-white/40"
-            >
-              {t.contact}
-              <ArrowUpRight size={16} />
+            <a className="button button-secondary" href="#work">
+              {t.work}
+              <ArrowDownRight size={17} aria-hidden="true" />
             </a>
           </div>
         </div>
 
-        <figure className="portrait-frame">
-          <div
-            className="portrait-placeholder"
+        <figure className="hero-mark" aria-label={t.markLabel}>
+          <svg
+            className="brand-symbol"
+            viewBox="0 0 180 180"
             role="img"
-            aria-label={t.portraitNote}
+            aria-hidden="true"
           >
-            <span className="portrait-monogram" aria-hidden="true">
-              DM
-            </span>
-            <span className="portrait-label">{t.portrait}</span>
-            <span className="portrait-cross portrait-cross-top" aria-hidden="true" />
-            <span className="portrait-cross portrait-cross-bottom" aria-hidden="true" />
-          </div>
-          <figcaption className="mt-3 flex justify-between gap-3 text-xs text-white/45">
-            <span>{t.portraitCaption}</span>
-            <span>01 — 03</span>
-          </figcaption>
+            <path
+              d="M90 15 156 53v74l-66 38-66-38V53l66-38Z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="m24 53 66 38 66-38M90 91v74"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="m90 15 66 38-66 38-66-38 66-38Z"
+              fill="var(--accent)"
+            />
+            <path
+              d="m90 91 66-38v74l-66 38V91Z"
+              fill="var(--accent)"
+              fillOpacity=".36"
+            />
+          </svg>
+          <span className="hero-mark-coordinate hero-mark-coordinate-top">
+            01 — 04
+          </span>
+          <span className="hero-mark-coordinate hero-mark-coordinate-bottom">
+            FRONTEND · DIGITAL
+          </span>
+          <figcaption>{t.markCaption}</figcaption>
         </figure>
       </section>
 
-      <section id="work" className="section border-t border-white/10">
+      <section
+        className="credibility-section"
+        aria-labelledby="credibility-title"
+      >
+        <div className="container credibility-layout">
+          <p className="eyebrow" id="credibility-title">
+            {t.credibilityNumber} <span aria-hidden="true">/</span>{" "}
+            {t.credibility}
+          </p>
+          <ul className="credibility-list">
+            {t.credibilityItems.map((item) => (
+              <li key={item.title}>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="about" className="page-section" aria-labelledby="about-title">
+        <div className="container about-layout">
+          <SectionHeading
+            number={t.aboutNumber}
+            label={t.about}
+            title={t.aboutHeading}
+            titleId="about-title"
+          />
+          <p className="about-copy">{t.aboutText}</p>
+        </div>
+      </section>
+
+      <section
+        id="expertise"
+        className="page-section section-graphite"
+        aria-labelledby="expertise-title"
+      >
         <div className="container">
-          <div className="mb-12 grid gap-5 sm:grid-cols-[1fr_320px] sm:items-end">
-            <div>
-              <p className="eyebrow mb-4">01 / {t.selected}</p>
-              <h2 className="font-serif text-4xl font-medium tracking-tight sm:text-6xl">
-                {t.heading}
-              </h2>
-            </div>
-            <p className="max-w-sm text-sm leading-6 text-white/50">
-              {t.subheading}
-            </p>
+          <div className="section-intro">
+            <SectionHeading
+              number={t.expertiseNumber}
+              label={t.expertise}
+              title={t.expertiseHeading}
+              titleId="expertise-title"
+            />
+            <p>{t.expertiseIntro}</p>
           </div>
 
-          <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
-            {projects.map((project) => {
-              const projectCopy = project.copy[locale];
-
-              return (
-                <article key={project.number} className="project-card group">
-                  <div className="project-image aspect-[4/3] rounded-sm border border-white/10">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={project.image}
-                      alt={projectCopy.alt}
-                      loading="lazy"
-                    />
-                    <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 text-xs backdrop-blur">
-                      {projectCopy.status}
-                    </span>
-                    <span className="absolute bottom-4 right-4 rounded-full bg-black/60 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-white/70 backdrop-blur">
-                      {t.imageNote}
-                    </span>
-                  </div>
-
-                  <div className="mt-5 flex items-start justify-between gap-4 border-b border-white/10 pb-5">
-                    <div>
-                      <p className="mb-3 text-xs uppercase tracking-[0.12em] text-white/45">
-                        {project.number} &nbsp;·&nbsp; {projectCopy.category}
-                      </p>
-                      <h3 className="font-serif text-2xl font-medium tracking-tight sm:text-3xl">
-                        {project.name}
-                      </h3>
-                      <p className="mt-3 max-w-lg text-sm leading-6 text-white/55">
-                        {projectCopy.description}
-                      </p>
-                    </div>
-                    <span className="pt-1 text-xs tabular-nums text-white/35">
-                      {project.year}
-                    </span>
-                  </div>
-                </article>
-              );
-            })}
+          <div className="expertise-grid">
+            {t.expertiseGroups.map((group) => (
+              <article className="expertise-card" key={group.title}>
+                <h3>{group.title}</h3>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section border-t border-white/10">
+      <section id="work" className="page-section" aria-labelledby="work-title">
         <div className="container">
-          <div className="mb-10 grid gap-5 sm:grid-cols-[1fr_320px] sm:items-end">
-            <div>
-              <p className="eyebrow mb-4">02 / {t.visualNotes}</p>
-              <h2 className="font-serif text-4xl font-medium tracking-tight sm:text-5xl">
-                {t.visualHeading}
-              </h2>
-            </div>
-            <p className="max-w-sm text-sm leading-6 text-white/50">
-              {t.visualText}
-            </p>
+          <div className="section-intro">
+            <SectionHeading
+              number={t.projectsNumber}
+              label={t.projects}
+              title={t.projectsHeading}
+              titleId="work-title"
+            />
+            <p>{t.projectsIntro}</p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-[1.35fr_0.65fr]">
-            <figure className="visual-note group">
-              <div className="visual-note-image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={projects[0].image}
-                  alt={projects[0].copy[locale].alt}
-                  loading="lazy"
-                />
-                <span className="visual-note-tag">{t.visualReference}</span>
-              </div>
-              <figcaption className="mt-3 flex justify-between gap-4 text-xs text-white/45">
-                <span>01 — Veyro</span>
-                <span>{t.imageNote}</span>
-              </figcaption>
-            </figure>
-
-            <div className="grid gap-5">
-              <figure className="visual-note group">
-                <div className="visual-note-image">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={projects[1].image}
-                    alt={projects[1].copy[locale].alt}
-                    loading="lazy"
-                  />
-                  <span className="visual-note-tag">{t.visualReference}</span>
-                </div>
-                <figcaption className="mt-3 flex justify-between gap-4 text-xs text-white/45">
-                  <span>02 — Mukuku Media OS</span>
-                  <span>{t.imageNote}</span>
-                </figcaption>
-              </figure>
-              <div className="process-note">
-                <span className="eyebrow">{t.processCardTitle}</span>
-                <div className="process-note-lines" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <p>{t.processCardText}</p>
-              </div>
-            </div>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.number}
+                project={project}
+                locale={locale}
+                visualLabel={t.projectVisual}
+                openProjectLabel={t.projectOpen}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="about" className="section border-t border-white/10">
+      <section
+        id="lab"
+        className="page-section section-graphite"
+        aria-labelledby="lab-title"
+      >
         <div className="container">
-          <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
-            <div>
-              <p className="eyebrow mb-4">03 / {t.about}</p>
-              <h2 className="max-w-md font-serif text-4xl font-medium tracking-tight sm:text-6xl">
-                {t.aboutHeading}
-              </h2>
-            </div>
-            <p className="max-w-xl text-lg leading-8 text-white/60">
-              {t.aboutText}
-            </p>
+          <div className="section-intro">
+            <SectionHeading
+              number={t.labNumber}
+              label={t.lab}
+              title={t.labHeading}
+              titleId="lab-title"
+            />
+            <p>{t.labIntro}</p>
           </div>
 
-          <ol className="mt-14 grid gap-8 border-t border-white/10 pt-6 sm:grid-cols-3 sm:gap-6">
-            {t.steps.map((step) => (
-              <li key={step.number}>
-                <p className="mb-8 text-xs tabular-nums text-[var(--accent)]">
-                  {step.number}
-                </p>
-                <h3 className="font-serif text-xl font-medium">{step.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/50">
-                  {step.description}
-                </p>
+          <div className="lab-grid">
+            {t.labItems.map((item, index) => (
+              <article className={`lab-card lab-card-${index + 1}`} key={item.number}>
+                <div
+                  className={`lab-visual lab-visual-${index + 1}`}
+                  aria-hidden="true"
+                >
+                  {index === 0 && (
+                    <span className="lab-type-specimen">Aa</span>
+                  )}
+                  {index === 1 && (
+                    <span className="lab-grid-specimen">
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                    </span>
+                  )}
+                  {index === 2 && (
+                    <span className="lab-ui-specimen">
+                      <i />
+                      <i />
+                      <i />
+                    </span>
+                  )}
+                  <span className="lab-visual-index">{item.number}</span>
+                </div>
+                <div className="lab-caption">
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="method"
+        className="page-section"
+        aria-labelledby="method-title"
+      >
+        <div className="container">
+          <div className="section-intro">
+            <SectionHeading
+              number={t.methodNumber}
+              label={t.method}
+              title={t.methodHeading}
+              titleId="method-title"
+            />
+          </div>
+
+          <ol className="method-grid">
+            {t.methodSteps.map((step) => (
+              <li className="method-card" key={step.number}>
+                <span className="method-number">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section id="contact" className="section border-t border-white/10">
+      <section
+        id="services"
+        className="page-section section-graphite"
+        aria-labelledby="services-title"
+      >
         <div className="container">
-          <div>
-            <p className="eyebrow mb-5">04 / {locale === "fr" ? "Contact" : "Contact"}</p>
-            <h2 className="max-w-3xl font-serif text-4xl font-medium tracking-tight sm:text-6xl">
-              {t.contactTitle}
-            </h2>
-            <p className="mt-5 max-w-lg leading-7 text-white/55">
-              {t.contactText}
-            </p>
+          <div className="section-intro">
+            <SectionHeading
+              number={t.servicesNumber}
+              label={t.services}
+              title={t.servicesHeading}
+              titleId="services-title"
+            />
+            <p>{t.servicesIntro}</p>
           </div>
-          <p className="eyebrow mb-4 mt-10">{t.contactMethods}</p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <a
-              href="mailto:dimitrymabom@gmail.com"
-              className="contact-card"
-            >
-              <Mail size={19} aria-hidden="true" />
-              <span>
-                <span className="contact-card-label">{t.emailLabel}</span>
-                <span className="contact-card-value">dimitrymabom@gmail.com</span>
-              </span>
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/dimitri-mabom"
-              target="_blank"
-              rel="noreferrer"
-              className="contact-card"
-            >
-              <span className="linkedin-mark" aria-hidden="true">
-                in
-              </span>
-              <span>
-                <span className="contact-card-label">{t.linkedinLabel}</span>
-                <span className="contact-card-value">dimitri-mabom</span>
-              </span>
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href="https://wa.me/237653450971"
-              target="_blank"
-              rel="noreferrer"
-              className="contact-card"
-            >
-              <MessageCircle size={19} aria-hidden="true" />
-              <span>
-                <span className="contact-card-label">{t.whatsappLabel}</span>
-                <span className="contact-card-value">+237 653 450 971</span>
-              </span>
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href="https://github.com/dimitrimabom"
-              target="_blank"
-              rel="noreferrer"
-              className="contact-card"
-            >
-              <Code2 size={19} aria-hidden="true" />
-              <span>
-                <span className="contact-card-label">GitHub</span>
-                <span className="contact-card-value">dimitrimabom</span>
-              </span>
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </div>
+
+          <ol className="services-grid">
+            {t.serviceItems.map((service) => (
+              <li className="service-card" key={service.number}>
+                <span className="service-number">{service.number}</span>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </li>
+            ))}
+          </ol>
+
+          <a className="button button-primary service-cta" href="#contact">
+            {t.servicesAction}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
         </div>
       </section>
 
-      <footer className="container flex flex-col justify-between gap-3 border-t border-white/10 py-7 text-xs text-white/40 sm:flex-row">
-        <span>© Dimitri Mabom</span>
-        <span>{t.footer}</span>
+      <section
+        id="contact"
+        className="page-section section-graphite"
+        aria-labelledby="contact-title"
+      >
+        <div className="container">
+          <div className="section-intro contact-intro">
+            <SectionHeading
+              number={t.contactNumber}
+              label={t.contactSection}
+              title={t.contactHeading}
+              titleId="contact-title"
+            />
+            <p>{t.contactIntro}</p>
+          </div>
+
+          <ul className="contact-grid">
+            <ContactLink
+              href="mailto:dimitrymabom@gmail.com"
+              label={t.email}
+              detail="dimitrymabom@gmail.com"
+              icon={<Mail size={18} aria-hidden="true" />}
+            />
+            <ContactLink
+              href="https://www.linkedin.com/in/dimitri-mabom"
+              label={t.linkedin}
+              detail="dimitri-mabom"
+              icon={<span className="linkedin-mark" aria-hidden="true">in</span>}
+              external
+            />
+            <ContactLink
+              href="https://wa.me/237653450971"
+              label={t.whatsapp}
+              detail="+237 653 450 971"
+              icon={<MessageCircle size={18} aria-hidden="true" />}
+              external
+            />
+            <ContactLink
+              href="https://github.com/dimitrimabom"
+              label={t.github}
+              detail="dimitrimabom"
+              icon={<Code2 size={18} aria-hidden="true" />}
+              external
+            />
+          </ul>
+        </div>
+      </section>
+
+      <footer className="site-footer container">
+        <Link href={`/${locale}`} className="footer-brand">
+          Dimitri<span>.</span>
+        </Link>
+        <nav aria-label={t.footerNavigation} className="footer-nav">
+          <a href="#work">{t.footerWork}</a>
+          <a href="#about">{t.footerAbout}</a>
+          <a href="#services">{t.footerServices}</a>
+          <a href="#contact">{t.footerContact}</a>
+          <a href="https://github.com/dimitrimabom" target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
+        </nav>
+        <span className="footer-copyright">
+          © 2026 Dimitri Mabom · {t.footer}
+        </span>
       </footer>
     </main>
   );
 }
 
-function HomeFallback() {
+function SectionHeading({
+  number,
+  label,
+  title,
+  titleId,
+}: {
+  number: string;
+  label: string;
+  title: string;
+  titleId: string;
+}) {
   return (
-    <main className="container min-h-screen py-6">
-      <header className="flex items-center justify-between">
-        <span className="text-lg font-semibold">
-          Dimitri<span className="text-[var(--accent)]">.</span>
-        </span>
-        <nav aria-label="Language" className="flex gap-4 text-sm text-white/60">
-          <Link href="/fr">FR</Link>
-          <Link href="/en">EN</Link>
-        </nav>
-      </header>
-      <section className="flex min-h-[70vh] flex-col justify-center">
-        <p className="eyebrow mb-6">PORTFOLIO · DIMITRI MABOM</p>
-        <div className="h-12 w-full max-w-3xl animate-pulse rounded bg-white/10 sm:h-20" />
-        <div className="mt-4 h-12 w-2/3 max-w-xl animate-pulse rounded bg-white/10 sm:h-20" />
-        <div className="mt-8 h-4 w-full max-w-md animate-pulse rounded bg-white/10" />
-      </section>
-    </main>
+    <div className="section-heading">
+      <p className="eyebrow">
+        {number} <span aria-hidden="true">/</span> {label}
+      </p>
+      <h2 id={titleId}>{title}</h2>
+    </div>
   );
 }
 
-function isLocale(locale: string): locale is Locale {
-  return locales.some((supportedLocale) => supportedLocale === locale);
+function ContactLink({
+  href,
+  label,
+  detail,
+  icon,
+  external = false,
+}: {
+  href: string;
+  label: string;
+  detail: string;
+  icon: ReactNode;
+  external?: boolean;
+}) {
+  return (
+    <li>
+      <a
+        className="contact-card"
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noreferrer" : undefined}
+      >
+        {icon}
+        <span className="contact-card-copy">
+          <span className="contact-card-label">{label}</span>
+          <span className="contact-card-detail">{detail}</span>
+        </span>
+        {external && <ArrowUpRight size={15} aria-hidden="true" />}
+      </a>
+    </li>
+  );
 }

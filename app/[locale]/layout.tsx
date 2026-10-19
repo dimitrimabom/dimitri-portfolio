@@ -1,13 +1,11 @@
 
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
+import { inter, jetBrainsMono, manrope } from "../fonts";
+import { isLocale, locales } from "@/lib/i18n";
 import "../globals.css";
 
 export const instant = false;
-
-const locales = ["fr", "en"] as const;
-
-type Locale = (typeof locales)[number];
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,11 +26,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body
+        className={`${inter.variable} ${manrope.variable} ${jetBrainsMono.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
-}
-
-function isLocale(locale: string): locale is Locale {
-  return locales.some((supportedLocale) => supportedLocale === locale);
 }

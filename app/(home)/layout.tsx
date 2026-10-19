@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { inter, jetBrainsMono, manrope } from "../fonts";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +12,11 @@ export const metadata: Metadata = {
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body
+        className={`${inter.variable} ${manrope.variable} ${jetBrainsMono.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
