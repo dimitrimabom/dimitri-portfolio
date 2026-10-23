@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { ProjectArtwork } from "@/components/ProjectCard";
+import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { projects } from "@/content/projects";
 import { copy, isLocale, locales } from "@/lib/i18n";
 import { siteUrl } from "@/lib/site";
@@ -10,6 +9,8 @@ import { siteUrl } from "@/lib/site";
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
+
+export const instant = false;
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -63,33 +64,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main>
-      <header className="site-header container">
-        <Link href={`/${locale}`} className="brand" aria-label={t.homeLabel}>
-          Dimitri<span>.</span>
-        </Link>
-        <nav aria-label={t.navLabel} className="site-nav">
-          <Link href={`/${locale}#work`}>{t.projectBack}</Link>
-          <Link
-            href={`/${locale === "fr" ? "en" : "fr"}/projects/${project.slug}`}
-            className="language-link"
-            aria-label={t.switchLanguage}
-            hrefLang={locale === "fr" ? "en" : "fr"}
-          >
-            {t.switchLanguageShort}
-          </Link>
-        </nav>
-      </header>
+      <SiteHeader
+        locale={locale}
+        languagePath={`/projects/${project.slug}`}
+      />
 
       <article className="project-detail container">
         <Link className="project-back-link" href={`/${locale}#work`}>
-          <ArrowLeft size={15} aria-hidden="true" />
           {t.projectBack}
         </Link>
 
         <header className="project-detail-header">
           <p className="eyebrow">
             {project.number} <span aria-hidden="true">/</span>{" "}
-            {projectCopy.category}
+            {projectCopy.category} <span aria-hidden="true">/</span>{" "}
+            {project.year}
           </p>
           <h1>{project.name}</h1>
           <p className="project-detail-summary">{projectCopy.description}</p>
@@ -98,20 +87,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <span>{t.projectStatusLabel}:</span> {projectCopy.status}
           </p>
         </header>
-
-        <ProjectArtwork
-          project={project}
-          locale={locale}
-          visualLabel={t.projectVisual}
-        />
-
-        <section className="project-detail-overview">
-          <div>
-            <p className="eyebrow">{t.projectOverview}</p>
-            <h2>{projectCopy.category}</h2>
-          </div>
-          <p>{projectCopy.description}</p>
-        </section>
 
         {project.story && project.story.length > 0 && (
           <div className="project-story">
@@ -124,18 +99,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         )}
 
-        <a className="button button-primary project-detail-cta" href="mailto:dimitrymabom@gmail.com">
+        <a
+          className="button button-primary project-detail-cta"
+          href="mailto:dimitrymabom@gmail.com"
+        >
           {t.projectContact}
-          <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </article>
 
-      <footer className="site-footer container">
-        <Link href={`/${locale}`} className="footer-brand">
-          Dimitri<span>.</span>
-        </Link>
-        <span className="footer-copyright">© 2026 Dimitri Mabom</span>
-      </footer>
+      <SiteFooter locale={locale} />
     </main>
   );
 }

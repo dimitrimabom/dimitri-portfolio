@@ -15,19 +15,20 @@ export const copy = {
     navLabel: "Navigation principale",
     workNav: "Projets",
     aboutNav: "À propos",
+    expertiseNav: "Expertise",
     servicesNav: "Services",
     contactNav: "Contact",
     footerNavigation: "Navigation secondaire",
     switchLanguage: "Switch to English",
     switchLanguageShort: "EN",
     role: "Développeur frontend indépendant",
-    intro: "Je conçois et développe des interfaces web pour vos produits.",
+    introLead: "Je conçois des interfaces",
+    introAccent: "qui font avancer",
+    introEnd: "vos produits.",
     heroText:
       "Sites et interfaces de produits numériques, du prototype frontend à l'amélioration d'une expérience existante.",
     work: "Voir les projets",
     contactAction: "Discuter d'un projet",
-    markLabel: "Composition géométrique abstraite, signature visuelle de Dimitri Mabom",
-    markCaption: "Frontend · Interfaces · Produits numériques",
     credibilityNumber: "01",
     credibility: "Ce que j'apporte",
     credibilityItems: [
@@ -51,9 +52,9 @@ export const copy = {
       "Je m'intéresse à la rencontre entre le design, la technologie et les usages. Mon approche du frontend consiste à transformer des besoins en interfaces compréhensibles, cohérentes et agréables à utiliser.",
     expertiseNumber: "03",
     expertise: "Expertise",
-    expertiseHeading: "Outils et pratiques",
+    expertiseHeading: "Du besoin produit à l'interface frontend.",
     expertiseIntro:
-      "Technologies et domaines déjà présentés dans mon parcours.",
+      "Les outils et pratiques que je mobilise pour construire des interfaces web claires, responsives et soignées.",
     expertiseGroups: [
       {
         title: "Développement frontend",
@@ -73,22 +74,10 @@ export const copy = {
     projectsHeading: "Des idées en construction.",
     projectsIntro:
       "Prototypes et concepts numériques, présentés selon leur état réel.",
-    projectVisual: "Illustration du concept · pas une capture produit",
     projectOpen: "Voir le projet",
     projectBack: "Retour aux projets",
-    projectOverview: "Aperçu du projet",
     projectStatusLabel: "État actuel",
     projectContact: "Discuter d'un projet similaire",
-    labNumber: "05",
-    lab: "Explorations",
-    labHeading: "Le détail, à plusieurs échelles.",
-    labIntro:
-      "Quelques études graphiques autour des briques visibles de cette interface.",
-    labItems: [
-      { number: "A", title: "Typographie", detail: "Hiérarchie et rythme" },
-      { number: "B", title: "Grille", detail: "Composition responsive" },
-      { number: "C", title: "Interface", detail: "États et composants" },
-    ],
     methodNumber: "06",
     method: "Méthode",
     methodHeading: "De la question au produit.",
@@ -158,6 +147,7 @@ export const copy = {
     footer: "Conçu avec intention.",
     footerWork: "Projets",
     footerAbout: "À propos",
+    footerExpertise: "Expertise",
     footerServices: "Services",
     footerContact: "Contact",
   },
@@ -169,19 +159,20 @@ export const copy = {
     navLabel: "Main navigation",
     workNav: "Work",
     aboutNav: "About",
+    expertiseNav: "Expertise",
     servicesNav: "Services",
     contactNav: "Contact",
     footerNavigation: "Footer navigation",
     switchLanguage: "Passer en français",
     switchLanguageShort: "FR",
     role: "Independent frontend developer",
-    intro: "I design and build web interfaces for digital products.",
+    introLead: "I build interfaces",
+    introAccent: "that move",
+    introEnd: "your product forward.",
     heroText:
       "Websites and product interfaces, from frontend prototypes to improving an existing experience.",
     work: "Explore selected work",
     contactAction: "Discuss a project",
-    markLabel: "Abstract geometric composition, Dimitri Mabom's visual signature",
-    markCaption: "Frontend · Interfaces · Digital products",
     credibilityNumber: "01",
     credibility: "What I bring",
     credibilityItems: [
@@ -205,9 +196,9 @@ export const copy = {
       "I'm interested in the intersection of design, technology, and real-world use. My approach to frontend development is to turn needs into interfaces that feel clear, coherent, and enjoyable to use.",
     expertiseNumber: "03",
     expertise: "Expertise",
-    expertiseHeading: "Tools and practices",
+    expertiseHeading: "From product needs to frontend interfaces.",
     expertiseIntro:
-      "Technologies and areas already included in my profile.",
+      "The tools and practices I use to build clear, responsive, carefully crafted web interfaces.",
     expertiseGroups: [
       {
         title: "Frontend development",
@@ -227,22 +218,10 @@ export const copy = {
     projectsHeading: "Ideas taking shape.",
     projectsIntro:
       "Digital prototypes and concepts, presented at their actual stage.",
-    projectVisual: "Concept illustration · not a product screenshot",
     projectOpen: "View project",
     projectBack: "Back to selected work",
-    projectOverview: "Project overview",
     projectStatusLabel: "Current stage",
     projectContact: "Discuss a similar project",
-    labNumber: "05",
-    lab: "Explorations",
-    labHeading: "Details at different scales.",
-    labIntro:
-      "A few visual studies around the building blocks of this interface.",
-    labItems: [
-      { number: "A", title: "Typography", detail: "Hierarchy and rhythm" },
-      { number: "B", title: "Grid", detail: "Responsive composition" },
-      { number: "C", title: "Interface", detail: "States and components" },
-    ],
     methodNumber: "06",
     method: "Approach",
     methodHeading: "From question to product.",
@@ -312,6 +291,7 @@ export const copy = {
     footer: "Built with intention.",
     footerWork: "Work",
     footerAbout: "About",
+    footerExpertise: "Expertise",
     footerServices: "Services",
     footerContact: "Contact",
   },
@@ -324,18 +304,19 @@ export const copy = {
     navLabel: string;
     workNav: string;
     aboutNav: string;
+    expertiseNav: string;
     servicesNav: string;
     contactNav: string;
     footerNavigation: string;
     switchLanguage: string;
     switchLanguageShort: string;
     role: string;
-    intro: string;
+    introLead: string;
+    introAccent: string;
+    introEnd: string;
     heroText: string;
     work: string;
     contactAction: string;
-    markLabel: string;
-    markCaption: string;
     credibilityNumber: string;
     credibility: string;
     credibilityItems: { title: string; description: string }[];
@@ -352,17 +333,10 @@ export const copy = {
     projects: string;
     projectsHeading: string;
     projectsIntro: string;
-    projectVisual: string;
     projectOpen: string;
     projectBack: string;
-    projectOverview: string;
     projectStatusLabel: string;
     projectContact: string;
-    labNumber: string;
-    lab: string;
-    labHeading: string;
-    labIntro: string;
-    labItems: { number: string; title: string; detail: string }[];
     methodNumber: string;
     method: string;
     methodHeading: string;
@@ -384,6 +358,7 @@ export const copy = {
     footer: string;
     footerWork: string;
     footerAbout: string;
+    footerExpertise: string;
     footerServices: string;
     footerContact: string;
   }

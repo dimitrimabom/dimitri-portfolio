@@ -4,7 +4,6 @@ type ProjectCopy = {
   category: string;
   description: string;
   status: string;
-  detailLabel: string;
 };
 
 export type ProjectStorySection = {
@@ -27,11 +26,6 @@ export type Project = {
   slug: string;
   name: string;
   year: string;
-  artwork: "documents" | "media";
-  image?: {
-    src: string;
-    alt: Record<Locale, string>;
-  };
   story?: ProjectStorySection[];
   copy: Record<Locale, ProjectCopy>;
 };
@@ -42,21 +36,18 @@ export const projects: Project[] = [
     slug: "veyro",
     name: "Veyro",
     year: "2026",
-    artwork: "documents",
     copy: {
       fr: {
         category: "Application de bureau",
         description:
-          "Prototype autour d'une façon plus simple de gérer et parcourir des documents PDF.",
+          "Prototype de bureau consacré à l'organisation et à la navigation de documents PDF.",
         status: "Prototype",
-        detailLabel: "Gestion et navigation de documents PDF",
       },
       en: {
         category: "Desktop application",
         description:
-          "A prototype exploring a simpler way to manage and navigate PDF documents.",
+          "A desktop prototype focused on organizing and navigating PDF documents.",
         status: "Prototype",
-        detailLabel: "PDF document management and navigation",
       },
     },
   },
@@ -65,21 +56,18 @@ export const projects: Project[] = [
     slug: "mukuku-media-os",
     name: "Mukuku Media OS",
     year: "2026",
-    artwork: "media",
     copy: {
       fr: {
         category: "Concept d'application web",
         description:
-          "Concept de plateforme pour organiser des flux de travail média dans un espace numérique.",
+          "Concept de plateforme pour organiser les étapes d'un workflow média dans un espace de travail numérique.",
         status: "Concept",
-        detailLabel: "Concept de plateforme de workflows média",
       },
       en: {
         category: "Web application concept",
         description:
-          "A platform concept for organizing media workflows in one digital workspace.",
+          "A platform concept for organizing media workflow stages in one digital workspace.",
         status: "Concept",
-        detailLabel: "Media workflow platform concept",
       },
     },
   },
