@@ -2,7 +2,7 @@
 
 :root {
   --ink: #111214;
-  --signal: #ff593d;
+  --electric-blue: #1717ff;
   --paper: #f4f1e8;
   --graphite: #292b30;
   --muted-ink: rgba(17, 18, 20, 0.66);
@@ -35,12 +35,12 @@ a {
 }
 
 a:focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--electric-blue);
   outline-offset: 4px;
 }
 
 ::selection {
-  background: var(--signal);
+  background: var(--electric-blue);
   color: var(--ink);
 }
 
@@ -67,9 +67,63 @@ a:focus-visible {
   letter-spacing: -0.07em;
 }
 
-.brand span,
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: block;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  object-fit: contain;
+}
+
+.brand-lockup {
+  display: grid;
+  gap: 0.22rem;
+  border-left: 1px solid var(--border-ink);
+  padding-left: 0.75rem;
+}
+
+.brand-name {
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+  font-size: 0.83rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1;
+}
+
+.brand-name strong {
+  font-weight: 800;
+}
+
+.brand-role {
+  position: relative;
+  padding-left: 0.85rem;
+  color: var(--muted-ink);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.47rem;
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+
+.brand-role::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.5rem;
+  height: 2px;
+  background: var(--electric-blue);
+  content: "";
+  transform: translateY(-50%);
+}
+
 .footer-brand span {
-  color: var(--signal);
+  color: var(--electric-blue);
 }
 
 .site-nav {
@@ -87,7 +141,7 @@ a:focus-visible {
 
 .site-nav a:hover,
 .footer-nav a:hover {
-  color: var(--signal);
+  color: var(--electric-blue);
 }
 
 .site-nav .language-link {
@@ -171,8 +225,8 @@ a:focus-visible {
 
 .hero-title-accent {
   display: table;
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--electric-blue);
+  color: var(--paper);
   padding-inline: 0.08em;
 }
 
@@ -207,8 +261,8 @@ a:focus-visible {
 }
 
 .button-primary {
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--electric-blue);
+  color: var(--paper);
 }
 
 .button-primary:hover {
@@ -298,8 +352,8 @@ a:focus-visible {
 }
 
 .section-signal {
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--electric-blue);
+  color: var(--paper);
 }
 
 .about-layout {
@@ -329,7 +383,7 @@ a:focus-visible {
 
 .section-signal .eyebrow,
 .section-signal .section-intro > p {
-  color: rgba(17, 18, 20, 0.75);
+  color: var(--paper);
 }
 
 .section-graphite .section-intro > p,
@@ -454,19 +508,19 @@ a:focus-visible {
   width: 0.42rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--signal);
+  background: var(--electric-blue);
 }
 
 .project-link {
   font-size: 0.69rem;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: var(--signal);
+  text-decoration-color: var(--electric-blue);
   text-underline-offset: 0.25rem;
 }
 
 .project-link:hover {
-  color: var(--signal);
+  color: var(--electric-blue);
 }
 
 .method-grid {
@@ -488,7 +542,7 @@ a:focus-visible {
 .service-number {
   display: block;
   margin-bottom: 1.3rem;
-  color: var(--signal);
+  color: var(--electric-blue);
   font-size: 0.62rem;
 }
 
@@ -543,7 +597,7 @@ a:focus-visible {
   min-height: 72px;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid rgba(17, 18, 20, 0.4);
+  border: 1px solid rgba(244, 241, 232, 0.55);
   padding: 0.75rem;
   transition:
     background-color 150ms ease,
@@ -551,8 +605,9 @@ a:focus-visible {
 }
 
 .contact-card:hover {
-  border-color: var(--ink);
-  background: var(--paper);
+  border-color: var(--paper);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .contact-card-copy {
@@ -563,7 +618,7 @@ a:focus-visible {
 }
 
 .contact-card-label {
-  color: rgba(17, 18, 20, 0.7);
+  color: var(--muted-paper);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.56rem;
   text-transform: uppercase;
@@ -612,6 +667,18 @@ a:focus-visible {
 .editorial-page {
   min-height: calc(100svh - 154px);
   padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+.route-fallback {
+  min-height: 70svh;
+  padding-top: 16vh;
+}
+
+.route-fallback-line {
+  display: block;
+  width: min(30rem, 60%);
+  height: 1px;
+  background: var(--electric-blue);
 }
 
 .editorial-page-heading {
@@ -664,7 +731,7 @@ a:focus-visible {
 
 .editorial-card-number,
 .editorial-method-list > li > span {
-  color: var(--signal);
+  color: var(--electric-blue);
 }
 
 .editorial-proof-grid h3,
@@ -759,13 +826,9 @@ a:focus-visible {
 }
 
 .editorial-contact-card:hover {
-  border-color: var(--ink);
-  background: var(--graphite);
+  border-color: var(--electric-blue);
+  background: var(--electric-blue);
   color: var(--paper);
-}
-
-.editorial-contact-card:hover .contact-card-label {
-  color: var(--muted-paper);
 }
 
 .project-detail {
@@ -780,7 +843,7 @@ a:focus-visible {
 }
 
 .project-back-link:hover {
-  color: var(--signal);
+  color: var(--electric-blue);
 }
 
 .project-detail-header {
@@ -873,6 +936,20 @@ a:focus-visible {
   .site-header {
     flex-wrap: wrap;
     padding-block: 0.85rem;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .brand {
+    gap: 0.6rem;
+  }
+
+  .brand-lockup {
+    padding-left: 0.6rem;
   }
 
   .site-nav {

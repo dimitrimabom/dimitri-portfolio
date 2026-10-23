@@ -1,11 +1,17 @@
 
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { inter, jetBrainsMono, manrope } from "../fonts";
 import { isLocale, locales } from "@/lib/i18n";
 import "../globals.css";
 
-export const instant = false;
+export const metadata: Metadata = {
+  icons: {
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

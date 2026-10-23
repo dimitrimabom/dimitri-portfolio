@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { projects } from "@/content/projects";
@@ -9,8 +10,6 @@ import { siteUrl } from "@/lib/site";
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
-
-export const instant = false;
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -51,7 +50,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default function ProjectPage({ params }: ProjectPageProps) {
+  return (
+    <Suspense fallback={<ProjectPageFallback />}>
+      <ProjectPageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ProjectPageContent({ params }: ProjectPageProps) {
   const { locale, slug } = await params;
   const project = projects.find((item) => item.slug === slug);
 
@@ -108,6 +115,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </article>
 
       <SiteFooter locale={locale} />
+    </main>
+  );
+}
+
+function ProjectPageFallback() {
+  return (
+    <main className="route-fallback container" aria-busy="true">
+      <span className="route-fallback-line" aria-hidden="true" />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { copy, isLocale, locales, type Locale } from "@/lib/i18n";
@@ -21,8 +22,6 @@ type LocalizedPage = {
 type PageProps = {
   params: Promise<{ locale: string; page: string }>;
 };
-
-export const instant = false;
 
 function isPageSlug(page: string): page is PageSlug {
   return editorialPageSlugs.some((slug) => slug === page);
@@ -97,7 +96,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function EditorialPage({ params }: PageProps) {
+export default function EditorialPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={<EditorialPageFallback />}>
+      <EditorialPageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function EditorialPageContent({ params }: PageProps) {
   const { locale, page } = await params;
 
   if (!isLocale(locale) || !isPageSlug(page)) {
@@ -232,6 +239,14 @@ export default async function EditorialPage({ params }: PageProps) {
       </article>
 
       <SiteFooter locale={locale} />
+    </main>
+  );
+}
+
+function EditorialPageFallback() {
+  return (
+    <main className="route-fallback container" aria-busy="true">
+      <span className="route-fallback-line" aria-hidden="true" />
     </main>
   );
 }

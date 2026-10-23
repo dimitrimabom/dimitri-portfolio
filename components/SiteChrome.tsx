@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { copy } from "@/lib/i18n";
@@ -14,7 +15,20 @@ export function SiteHeader({
   return (
     <header className="site-header container">
       <Link href={`/${locale}`} className="brand" aria-label={t.homeLabel}>
-        Dimitri<span>.</span>
+        <Image
+          className="brand-mark"
+          src="/favicon/android-chrome-192x192.png"
+          alt=""
+          width={44}
+          height={44}
+          priority
+        />
+        <span className="brand-lockup" aria-hidden="true">
+          <span className="brand-name">
+            DIMITRI <strong>MABOM</strong>
+          </span>
+          <span className="brand-role">FRONTEND DEVELOPER</span>
+        </span>
       </Link>
       <nav aria-label={t.navLabel} className="site-nav">
         <Link href={`/${locale}#work`}>{t.workNav}</Link>
